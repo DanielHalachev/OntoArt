@@ -1,4 +1,5 @@
-\documentclass{article}
+\documentclass[a4paper, 11pt]{article}
+\usepackage[hmargin=1in]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage[T1, T2A]{fontenc}
 \usepackage{csquotes}
@@ -17,6 +18,7 @@
 \usepackage[style=numeric, sorting=none, language=auto]{biblatex}
 
 \addbibresource{sources.bib}
+\allowdisplaybreaks
 
 \begin{document}
 \author{Даниел Халачев, ИИОЗ, 4MI3400603}
@@ -211,7 +213,8 @@
 \section*{Визуализация}
 \begin{figure}[H]
   \centering
-  \includesvg[width=\linewidth]{images/onto.svg}
+  % \includesvg[width=\linewidth]{images/onto.svg}
+  \includegraphics[width=\linewidth]{images/onto.png}  
 \end{figure}
 \section*{Представители на изброените стилове и епохи}
 \subsubsection*{Художници}
@@ -406,6 +409,21 @@
     FILTER (?medium != ?otherMedium)
   }
 \end{lstlisting}
+\section*{Сравнение с други онтологии}
+Кратко търсене в интернет откри много ограничено множество онтологии на естествен език, които са посветени на изкуството, сред които най-популярна е тази на Oxford\cite{Davies2009-hf}. Опит за достъп на 14.12.2024 чрез университетския ми профил върна грешка. 
+\newline
+Търсенето обаче не откри онтологии, които са машинно четими. Затова ще посоча някои предимства, недостатъци и възможности за подобрения, които не са базиран на съпоставка с други онтологии:
+\begin{itemize}
+  \item онтологията е консистентна
+  \item зададени са подходящ брой ограничения над ролите, които да помогнат в логическите изводи, но да не намалят изразителната сила на онтологията - например ролята \emph{represents} не е функционална, което отразява възможността едно произведение на изкуството да е екземпляр на повече от един стил
+  \item онтологията е проектирана да подлежи на лесно разширение:
+  \begin{itemize}
+    \item за различни видове техники - може да бъдат добавени концепти като \emph{Technique}
+    \item за всякакви видове изкуство чрез общия концепт \emph{Artwork}, който може да бъде разширен не само с \emph{Painting}, но и други видове творби - например скулптури, чрез \emph{Sculpture} чрез допълнителни ограничения с други концепти, например \emph{Medium}, към който може да бъдат добавени константи или подконцепти като \emph{HardMaterial, Marble} и др.
+  \end{itemize}
+  \item могат да бъдат дефинирани роли, задаващи точни години за началото и края на епохите, които, с подходящи правила за извод, могат да заменят релациите \emph{precededBy} и \emph{succeededBy}. По този начин епохите могат да се застъпват. Тази онтология умишлено не беше проектирана така с цел да бъдат спазени изискванията за брой и вид на ролите.
+  \item съществуват десетки други стилове и хиляди произведения на изкуството, които не фигурират в онтологията и могат да бъдат добавени след консултация с експерт в областта. 
+\end{itemize}
 \nocite{wikipediaCampbellsSoup,wikipediaGirlWith,wikipediaMonaLisa,wikipediaPortraitChalk,wikipediaThird1808,wikipediaHaystacksMonet,wikipediaStarryNight,wikipediaPeriodsWestern,wikipediaVisualArts,studiobinderHistoryTimeline}
 \printbibliography
 

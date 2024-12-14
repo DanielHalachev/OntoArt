@@ -1,0 +1,254 @@
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ %        Generated with the experimental alpha version of the TeX exporter of WebVOWL (version 1.1.3) %%% 
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+ %   The content can be used as import in other TeX documents. 
+ %   Parent document has to use the following packages   
+ %   \usepackage{tikz}  
+ %   \usepackage{helvet}  
+ %   \usetikzlibrary{decorations.markings,decorations.shapes,decorations,arrows,automata,backgrounds,petri,shapes.geometric}  
+ %   \usepackage{xcolor}  
+
+ %%%%%%%%%%%%%%% Example Parent Document %%%%%%%%%%%%%%%%%%%%%%%
+ %\documentclass{article} 
+ %\usepackage{tikz} 
+ %\usepackage{helvet} 
+ %\usetikzlibrary{decorations.markings,decorations.shapes,decorations,arrows,automata,backgrounds,petri,shapes.geometric} 
+ %\usepackage{xcolor} 
+
+ %\begin{document} 
+ %\section{Example} 
+ %  This is an example. 
+ %  \begin{figure} 
+ %    \input{<THIS_FILE_NAME>} % << tex file name for the graph 
+ %    \caption{A generated graph with TKIZ using alpha version of the TeX exporter of WebVOWL (version 1.1.3) } 
+ %  \end{figure} 
+ %\end{document} 
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\definecolor{imageBGCOLOR}{HTML}{FFFFFF} 
+\definecolor{owlClassColor}{HTML}{AACCFF}
+\definecolor{owlObjectPropertyColor}{HTML}{AACCFF}
+\definecolor{owlExternalClassColor}{HTML}{AACCFF}
+\definecolor{owlDatatypePropertyColor}{HTML}{99CC66}
+\definecolor{owlDatatypeColor}{HTML}{FFCC33}
+\definecolor{owlThingColor}{HTML}{FFFFFF}
+\definecolor{valuesFrom}{HTML}{6699CC}
+\definecolor{rdfPropertyColor}{HTML}{CC99CC}
+\definecolor{unionColor}{HTML}{6699cc}
+\begin{center} 
+\resizebox{\linewidth}{!}{
+\begin{tikzpicture}[framed]
+\clip (-258.8542025980753pt , 454.1874259547835pt ) rectangle (1644.8783488621077pt , -1106.5858554445492pt);
+\tikzstyle{dashed}=[dash pattern=on 4pt off 4pt] 
+\tikzstyle{dotted}=[dash pattern=on 2pt off 2pt] 
+\fontfamily{sans-serif}{\fontsize{12}{12}\selectfont}
+ 
+\tikzset{triangleBlack/.style = {fill=black, draw=black, line width=1pt,scale=0.7,regular polygon, regular polygon sides=3} }
+\tikzset{triangleWhite/.style = {fill=white, draw=black, line width=1pt,scale=0.7,regular polygon, regular polygon sides=3} }
+\tikzset{triangleBlue/.style  = {fill=valuesFrom, draw=valuesFrom, line width=1pt,scale=0.7,regular polygon, regular polygon sides=3} }
+\tikzset{Diamond/.style = {fill=white, draw=black, line width=2pt,scale=1.2,regular polygon, regular polygon sides=4} }
+\tikzset{Literal/.style={rectangle,align=center,
+font={\fontsize{12pt}{12}\selectfont \sffamily },
+black, draw=black, dashed, line width=1pt, fill=owlDatatypeColor, minimum width=80pt,
+minimum height = 20pt}}
+
+\tikzset{Datatype/.style={rectangle,align=center,
+font={\fontsize{12pt}{12}\selectfont \sffamily },
+black, draw=black, line width=1pt, fill=owlDatatypeColor, minimum width=80pt,
+minimum height = 20pt}}
+
+\tikzset{owlClass/.style={circle, inner sep=0mm,align=center, 
+font={\fontsize{12pt}{12}\selectfont \sffamily },
+black, draw=black, line width=1pt, fill=owlClassColor, minimum size=101pt}}
+
+\tikzset{anonymousClass/.style={circle, inner sep=0mm,align=center, 
+font={\fontsize{12pt}{12}\selectfont \sffamily },
+black, dashed, draw=black, line width=1pt, fill=owlClassColor, minimum size=101pt}}
+
+\tikzset{owlThing/.style={circle, inner sep=0mm,align=center,
+font={\fontsize{12pt}{12}\selectfont \sffamily },
+black, dashed, draw=black, line width=1pt, fill=owlThingColor, minimum size=62pt}}
+
+\tikzset{owlObjectProperty/.style={rectangle,align=center,
+inner sep=0mm,
+font={\fontsize{12pt}{12}\selectfont \sffamily },
+fill=owlObjectPropertyColor, minimum width=80pt,
+minimum height = 25pt}}
+
+\tikzset{rdfProperty/.style={rectangle,align=center,
+inner sep=0mm,
+font={\fontsize{12pt}{12}\selectfont \sffamily },
+fill=rdfPropertyColor, minimum width=80pt,
+minimum height = 25pt}}
+
+\tikzset{owlDatatypeProperty/.style={rectangle,align=center,
+fill=owlDatatypePropertyColor, minimum width=80pt,
+inner sep=0mm,
+font={\fontsize{12pt}{12}\selectfont \sffamily },
+minimum height = 25pt}}
+
+\tikzset{rdfsSubClassOf/.style={rectangle,align=center,
+font={\fontsize{12pt}{12}\selectfont \sffamily },
+inner sep=0mm,
+fill=imageBGCOLOR, minimum width=80pt,
+minimum height = 25pt}}
+
+\tikzset{unionOf/.style={circle, inner sep=0mm,align=center,
+font={\fontsize{12pt}{12}\selectfont \sffamily },
+black, draw=black, line width=1pt, fill=unionColor, minimum size=25pt}}
+
+\tikzset{disjointWith/.style={circle, inner sep=0mm,align=center,
+font={\fontsize{12pt}{12}\selectfont \sffamily },
+black, draw=black, line width=1pt, fill=unionColor, minimum size=20pt}}
+
+\tikzset{owlEquivalentClass/.style={circle,align=center,
+font={\fontsize{12pt}{12}\selectfont \sffamily },
+inner sep=0mm,
+black, solid, draw=black, line width=3pt, fill=owlExternalClassColor, minimum size=101pt,
+postaction = {draw,line width=1pt, white}}}
+
+\draw [black,line width=2pt] plot [smooth] coordinates {(775.8015510678878pt, -305.04470776853634pt) (846.951625731014pt, -172.53532055631214pt)  (918.1017003941403pt, -40.025933344087946pt)};
+\node[triangleBlack, rotate=-28.233505300812517] at (914.8820190429688pt, -46.022247314453125pt)   (single_marker0) {};
+ \draw [black,line width=2pt] plot [smooth] coordinates {(789.7999412869931pt, -383.8521703685837pt) (912.2024328716653pt, -492.61095101674175pt)  (1034.6049244563376pt, -601.3697316648999pt)};
+\node[triangleBlack, rotate=-131.62264867342193] at (1029.7606201171875pt, -597.0653686523438pt)   (single_marker1) {};
+ \draw [black,line width=2pt, tension=3] plot [smooth] coordinates {(1146.7779711914573pt, -592.7263329332928pt) (1241.7826889305259pt, -599.3960343749296pt)  (1176.0561663348976pt, -668.3192201507411pt)};
+\node[triangleBlack, rotate=-257.2153423723518] at (1182.41162109375pt, -666.8582153320312pt)   (marker2) {};
+ \draw [black, dotted ,line width=2pt] plot [smooth] coordinates {(-161.63947709817427pt, -271.66407254232723pt) (-96.8387316982279pt, -383.98468361914pt)  (-32.03798629828154pt, -496.30529469595274pt)};
+\node[triangleWhite, rotate=-150.01828781650147] at (-35.209129333496094pt, -490.8086853027344pt)   (single_marker3) {};
+ \draw [black, dotted ,line width=2pt] plot [smooth] coordinates {(141.11273520017272pt, -852.0946342599694pt) (221.26671185867232pt, -746.8048797515249pt)  (341.9777086977318pt, -671.820581753149pt)};
+\node[triangleWhite, rotate=-60.453890262759785] at (336.11712646484375pt, -675.1437377929688pt)   (marker4) {};
+ \draw [black,line width=2pt, tension=3] plot [smooth] coordinates {(1146.4544962157952pt, -719.2895223062083pt) (1119.5782306004055pt, -813.3086707542876pt)  (1066.287491666141pt, -731.3206772907869pt)};
+\node[triangleBlack, rotate=0.40566419664645537] at (1066.350830078125pt, -737.9066162109375pt)   (marker5) {};
+ \draw [black, dotted ,line width=2pt] plot [smooth] coordinates {(60.12463288669957pt, -553.7369713301576pt) (197.79027377580292pt, -562.9783799497723pt)  (335.3734514714777pt, -611.3704068526744pt)};
+\node[triangleWhite, rotate=-111.14340183255754] at (328.8462219238281pt, -608.8467407226562pt)   (marker6) {};
+ \draw [black, dotted ,line width=2pt] plot [smooth] coordinates {(634.6177743153273pt, -877.3452462136868pt) (535.1023998047816pt, -796.2206119328416pt)  (446.50859103946857pt, -688.9397012493279pt)};
+\node[triangleWhite, rotate=38.294226204015814] at (450.60772705078125pt, -694.1302490234375pt)   (marker7) {};
+ \draw [black, dotted ,line width=2pt] plot [smooth] coordinates {(394.2446250222182pt, -978.0401615776148pt) (370.3297249688997pt, -846.9964854164298pt)  (391.4339014919851pt, -704.284898873367pt)};
+\node[triangleWhite, rotate=-10.473360681522507] at (390.21282958984375pt, -710.8953247070312pt)   (marker8) {};
+ \draw [black, dotted ,line width=2pt] plot [smooth] coordinates {(229.92256687165644pt, -332.25641780350895pt) (332.8992095706554pt, -429.814224907928pt)  (379.32741643135125pt, -568.0342521706589pt)};
+\node[triangleWhite, rotate=-164.60486608701672] at (377.6750793457031pt, -562.0401611328125pt)   (marker9) {};
+ \draw [black, dotted ,line width=2pt] plot [smooth] coordinates {(1393.923023714256pt, -37.56794987837722pt) (1294.3379439390405pt, -110.29537208233533pt)  (1194.7528641638253pt, -183.02279428629345pt)};
+\node[triangleWhite, rotate=-233.85977336584753] at (1200.106201171875pt, -179.11318969726562pt)   (single_marker10) {};
+ \draw [black,line width=2pt] plot [smooth] coordinates {(1172.088700831881pt, -686.5017158635198pt) (1290.5212846156578pt, -734.1368255771338pt)  (1408.9538683994347pt, -781.7719352907478pt)};
+\node[triangleBlack, rotate=-111.91034471736245] at (1403.102783203125pt, -779.4185180664062pt)   (single_marker11) {};
+ \draw [black, dotted ,line width=2pt] plot [smooth] coordinates {(-130.34346418842526pt, -227.51983238097756pt) (-7.529759322753037pt, -250.61735511361618pt)  (115.28394554291918pt, -273.7148778462548pt)};
+\node[triangleWhite, rotate=-100.6512006073979] at (108.46980285644531pt, -272.433349609375pt)   (single_marker12) {};
+ \draw [black,line width=2pt] plot [smooth] coordinates {(493.49460801590646pt, 59.60947734750732pt) (471.4459629100419pt, 183.25282054120606pt)  (449.3973178041773pt, 306.8961637349048pt)};
+\node[triangleBlack, rotate=10.110762995715405] at (450.48358154296875pt, 300.8045349121094pt)   (single_marker13) {};
+ \draw [black,line width=2pt] plot [smooth] coordinates {(641.6109298832296pt, 121.68846117309045pt) (561.7884363548364pt, 221.6647029729796pt)  (481.96594282644344pt, 321.64094477286875pt)};
+\node[triangleBlack, rotate=38.604169635921096] at (486.2500305175781pt, 316.27520751953125pt)   (single_marker14) {};
+ \draw [black, dotted ,line width=2pt] plot [smooth] coordinates {(1019.5579703551081pt, 326.20541342843984pt) (991.386716247931pt, 203.2069843862642pt)  (963.215462140754pt, 80.20855534408855pt)};
+\node[triangleWhite, rotate=-192.90093527553654] at (964.6368408203125pt, 86.4145278930664pt)   (single_marker15) {};
+ \draw [black, dotted ,line width=2pt] plot [smooth] coordinates {(451.2037065928593pt, -584.7220644927519pt) (568.2047956110248pt, -466.52753257589336pt)  (708.6269861328564pt, -377.3238072592883pt)};
+\node[triangleWhite, rotate=-59.14067334112774] at (702.7784423828125pt, -380.819091796875pt)   (marker16) {};
+ \draw [black,line width=2pt, tension=3] plot [smooth] coordinates {(1506.955792855962pt, -743.0229565244897pt) (1602.8473347371296pt, -718.584807653793pt)  (1549.4217946460014pt, -801.8802012271791pt)};
+\node[triangleBlack, rotate=-241.29569069448277] at (1554.9578857421875pt, -798.83056640625pt)   (marker17) {};
+ \node[triangleBlack, rotate=-227.03122095315518] at (1511.358154296875pt, -738.9463500976562pt)   (INV_marker17) {};
+ \draw [black,line width=2pt] plot [smooth] coordinates {(721.7602139426483pt, -308.67239455512754pt) (634.8990678861379pt, -188.74044998920675pt)  (548.0379218296275pt, -68.80850542328596pt)};
+\node[triangleBlack, rotate=35.91373060112977] at (551.654541015625pt, -73.80209350585938pt)   (single_marker18) {};
+ \draw [black,line width=2pt] plot [smooth] coordinates {(743.7486924755964pt, -299.5969371500677pt) (720.5682907961175pt, -152.2669686792965pt)  (697.3878891166385pt, -4.937000208525319pt)};
+\node[triangleBlack, rotate=8.941481512269362] at (698.3646850585938pt, -11.145401000976562pt)   (single_marker19) {};
+ \draw [black,line width=2pt] plot [smooth] coordinates {(800.1629662913888pt, -334.1673339957493pt) (936.9057583489899pt, -289.5810748898682pt)  (1073.648550406591pt, -244.99481578398718pt)};
+\node[triangleBlack, rotate=-71.94104587683039] at (1067.3201904296875pt, -247.0582275390625pt)   (single_marker20) {};
+ \draw [black, dashed ,line width=2pt] plot [smooth] coordinates {(156.94937245955356pt, -869.9760473108818pt) (271.32359732312443pt, -803.0333757498101pt)  (358.6493127683245pt, -690.3090977451077pt)};
+\node[Diamond, rotate=-287.49430150449996] at (164.0429229736328pt, -866.2772216796875pt)   (marker21) {};
+ \draw [black, dashed ,line width=2pt] plot [smooth] coordinates {(54.98519735532595pt, -574.5501397043458pt) (182.98201926026678pt, -631.272889566154pt)  (331.39759604065307pt, -633.603259358375pt)};
+\node[Diamond, rotate=18.178145362589817] at (62.12656784057617pt, -578.15576171875pt)   (marker22) {};
+ \draw [black, dashed ,line width=2pt] plot [smooth] coordinates {(652.7701699142923pt, -862.2458872276725pt) (586.4534647927958pt, -741.0904270050871pt)  (462.6728139754749pt, -669.8073816712656pt)};
+\node[Diamond, rotate=-200.05578133954612] at (649.390869140625pt, -854.9946899414062pt)   (marker23) {};
+ \draw [black, dashed ,line width=2pt] plot [smooth] coordinates {(461.8580184549236pt, -598.2292421948084pt) (604.8596149971012pt, -511.48366036682484pt)  (717.3701044435877pt, -387.7150868315537pt)};
+\node[Diamond, rotate=-285.7604492784593] at (468.83740234375pt, -594.3192138671875pt)   (marker24) {};
+ \draw [black, dashed ,line width=2pt] plot [smooth] coordinates {(211.10999249504087pt, -346.1784976331229pt) (271.2532534809695pt, -467.0286483020745pt)  (358.5311515427692pt, -579.1976100332947pt)};
+\node[Diamond, rotate=-20.022929875165573] at (214.49029541015625pt, -353.42926025390625pt)   (marker25) {};
+ \draw [black, dashed ,line width=2pt] plot [smooth] coordinates {(417.97715915524043pt, -978.1276066628228pt) (443.2066907441401pt, -845.4248625123852pt)  (415.3088193484633pt, -703.7169607103951pt)};
+\node[Diamond, rotate=-238.58077912788738] at (419.85125732421875pt, -970.3502197265625pt)   (marker26) {};
+ \node[owlClass ,minimum size=127.57779661868975pt  , text=black] at (948.7509167970849pt, 17.05494680000318pt)   (Node27) {Medium\\ {\color{gray} 2 }};
+\node[owlClass ,minimum size=141.13456238488502pt  , text=black] at (506.0586100643117pt, -10.846335683113562pt)   (Node28) {Museum\\ {\color{gray} 6 }};
+\node[owlClass ,minimum size=143.27106466687738pt  , text=black] at (436.64577880732213pt, 378.40363754410674pt)   (Node29) {Region\\ {\color{gray} 7 }};
+\node[owlClass ,minimum size=145.15559323737952pt  , text=black] at (1477.2169246416956pt, -809.2282152231639pt)   (Node30) {Age\\ {\color{gray} 8 }};
+\node[owlClass ,minimum size=100pt  , text=black] at (751.67534924413pt, -349.97717248570166pt)   (Node31) {Artwork};
+\node[owlClass ,minimum size=121.09035488895913pt  , text=black] at (103.83335504423388pt, -901.0645911913521pt)   (Node32) {AcrylicPainting\\ {\color{gray} 1 }};
+\node[owlClass ,minimum size=121.09035488895913pt  , text=black] at (103.83335504423388pt, -901.0645911913521pt)   (Node32) {};
+\node[unionOf   , text=black] at (96.83335504423388pt, -901.0645911913521pt)   (SymbolNode32) {};
+\node[unionOf   , text=black] at (110.83335504423388pt, -901.0645911913521pt)   (SymbolNode32) {};
+\node[unionOf ,fill=none   , text=black] at (96.83335504423388pt, -901.0645911913521pt)   (SymbolNode32) {};
+\filldraw[even odd rule,fill=owlClassColor,line width=1pt] (96.83335504423388pt, -901.0645911913521pt) circle (12.5pt)  (110.83335504423388pt, -901.0645911913521pt) circle (12.5pt);
+ \node[font={\fontsize{12pt}{12}\selectfont \sffamily }, text=black] at (103.83335504423388pt, -901.0645911913521pt)  (intersectionText32) {$\cap$};
+\node[font={\fontsize{12pt}{12}\selectfont \sffamily }, text=black] at (103.83335504423388pt, -881.0645911913521pt)   (Node_text32) {AcrylicPainting\\ {\color{gray} 1 }};
+\node[owlClass ,minimum size=121.09035488895913pt  , text=black] at (-1.2823393311664262pt, -549.6147595807803pt)   (Node33) {PortraitPainting\\ {\color{gray} 1 }};
+\node[owlClass ,minimum size=121.09035488895913pt  , text=black] at (-1.2823393311664262pt, -549.6147595807803pt)   (Node33) {};
+\node[unionOf   , text=black] at (-8.282339331166426pt, -549.6147595807803pt)   (SymbolNode33) {};
+\node[unionOf   , text=black] at (5.717660668833574pt, -549.6147595807803pt)   (SymbolNode33) {};
+\node[unionOf ,fill=none   , text=black] at (-8.282339331166426pt, -549.6147595807803pt)   (SymbolNode33) {};
+\filldraw[even odd rule,fill=owlClassColor,line width=1pt] (-8.282339331166426pt, -549.6147595807803pt) circle (12.5pt)  (5.717660668833574pt, -549.6147595807803pt) circle (12.5pt);
+ \node[font={\fontsize{12pt}{12}\selectfont \sffamily }, text=black] at (-1.2823393311664262pt, -549.6147595807803pt)  (intersectionText33) {$\cap$};
+\node[font={\fontsize{12pt}{12}\selectfont \sffamily }, text=black] at (-1.2823393311664262pt, -529.6147595807803pt)   (Node_text33) {PortraitPainting\\ {\color{gray} 1 }};
+\node[owlClass ,minimum size=121.09035488895913pt  , text=black] at (682.3208200897428pt, -916.2326257926259pt)   (Node34) {HistoricalEventPai...\\ {\color{gray} 1 }};
+\node[owlClass ,minimum size=121.09035488895913pt  , text=black] at (682.3208200897428pt, -916.2326257926259pt)   (Node34) {};
+\node[unionOf   , text=black] at (675.3208200897428pt, -916.2326257926259pt)   (SymbolNode34) {};
+\node[unionOf   , text=black] at (689.3208200897428pt, -916.2326257926259pt)   (SymbolNode34) {};
+\node[unionOf ,fill=none   , text=black] at (675.3208200897428pt, -916.2326257926259pt)   (SymbolNode34) {};
+\filldraw[even odd rule,fill=owlClassColor,line width=1pt] (675.3208200897428pt, -916.2326257926259pt) circle (12.5pt)  (689.3208200897428pt, -916.2326257926259pt) circle (12.5pt);
+ \node[font={\fontsize{12pt}{12}\selectfont \sffamily }, text=black] at (682.3208200897428pt, -916.2326257926259pt)  (intersectionText34) {$\cap$};
+\node[font={\fontsize{12pt}{12}\selectfont \sffamily }, text=black] at (682.3208200897428pt, -896.2326257926259pt)   (Node_text34) {HistoricalEventPai...\\ {\color{gray} 1 }};
+\node[owlClass ,minimum size=138.66815150764887pt  , text=black] at (401.72300324943564pt, -634.7074844548249pt)   (Node35) {Painting\\ {\color{gray} 5 }};
+\node[owlClass ,minimum size=138.66815150764887pt  , text=black] at (401.72300324943564pt, -634.7074844548249pt)   (Node35) {};
+\node[unionOf   , text=black] at (394.72300324943564pt, -634.7074844548249pt)   (SymbolNode35) {};
+\node[unionOf   , text=black] at (408.72300324943564pt, -634.7074844548249pt)   (SymbolNode35) {};
+\node[unionOf ,fill=none   , text=black] at (394.72300324943564pt, -634.7074844548249pt)   (SymbolNode35) {};
+\filldraw[even odd rule,fill=owlClassColor,line width=1pt] (394.72300324943564pt, -634.7074844548249pt) circle (12.5pt)  (408.72300324943564pt, -634.7074844548249pt) circle (12.5pt);
+ \node[font={\fontsize{12pt}{12}\selectfont \sffamily }, text=black] at (401.72300324943564pt, -634.7074844548249pt)  (intersectionText35) {$\cap$};
+\node[font={\fontsize{12pt}{12}\selectfont \sffamily }, text=black] at (401.72300324943564pt, -614.7074844548249pt)   (Node_text35) {Painting\\ {\color{gray} 5 }};
+\node[owlClass ,minimum size=135.7510065989456pt  , text=black] at (1139.1310803658469pt, -223.64362788048038pt)   (Node36) {Depiction\\ {\color{gray} 4 }};
+\node[owlClass ,minimum size=132.18070977791825pt  , text=black] at (181.2183769097376pt, -286.11513911208334pt)   (Node37) {OilPainting\\ {\color{gray} 3 }};
+\node[owlClass ,minimum size=132.18070977791825pt  , text=black] at (181.2183769097376pt, -286.11513911208334pt)   (Node37) {};
+\node[unionOf   , text=black] at (174.2183769097376pt, -286.11513911208334pt)   (SymbolNode37) {};
+\node[unionOf   , text=black] at (188.2183769097376pt, -286.11513911208334pt)   (SymbolNode37) {};
+\node[unionOf ,fill=none   , text=black] at (174.2183769097376pt, -286.11513911208334pt)   (SymbolNode37) {};
+\filldraw[even odd rule,fill=owlClassColor,line width=1pt] (174.2183769097376pt, -286.11513911208334pt) circle (12.5pt)  (188.2183769097376pt, -286.11513911208334pt) circle (12.5pt);
+ \node[font={\fontsize{12pt}{12}\selectfont \sffamily }, text=black] at (181.2183769097376pt, -286.11513911208334pt)  (intersectionText37) {$\cap$};
+\node[font={\fontsize{12pt}{12}\selectfont \sffamily }, text=black] at (181.2183769097376pt, -266.11513911208334pt)   (Node_text37) {OilPainting\\ {\color{gray} 3 }};
+\node[owlClass ,minimum size=162.1295446083437pt  , text=black] at (1095.9517080874552pt, -655.8784373131944pt)   (Node38) {Style\\ {\color{gray} 25 }};
+\node[owlClass ,minimum size=127.57779661868975pt  , text=black] at (405.8762101498951pt, -1041.7763959467413pt)   (Node39) {LandscapePainting\\ {\color{gray} 2 }};
+\node[owlClass ,minimum size=127.57779661868975pt  , text=black] at (405.8762101498951pt, -1041.7763959467413pt)   (Node39) {};
+\node[unionOf   , text=black] at (398.8762101498951pt, -1041.7763959467413pt)   (SymbolNode39) {};
+\node[unionOf   , text=black] at (412.8762101498951pt, -1041.7763959467413pt)   (SymbolNode39) {};
+\node[unionOf ,fill=none   , text=black] at (398.8762101498951pt, -1041.7763959467413pt)   (SymbolNode39) {};
+\filldraw[even odd rule,fill=owlClassColor,line width=1pt] (398.8762101498951pt, -1041.7763959467413pt) circle (12.5pt)  (412.8762101498951pt, -1041.7763959467413pt) circle (12.5pt);
+ \node[font={\fontsize{12pt}{12}\selectfont \sffamily }, text=black] at (405.8762101498951pt, -1041.7763959467413pt)  (intersectionText39) {$\cap$};
+\node[font={\fontsize{12pt}{12}\selectfont \sffamily }, text=black] at (405.8762101498951pt, -1021.7763959467413pt)   (Node_text39) {LandscapePainting\\ {\color{gray} 2 }};
+\node[owlClass ,minimum size=127.57779661868975pt  , text=black] at (1446.244588300183pt, 0.6427190953440198pt)   (Node40) {Landscape\\ {\color{gray} 2 }};
+\node[owlClass ,minimum size=141.13456238488502pt  , text=black] at (686.2645700211557pt, 65.76057761121476pt)   (Node41) {Artist\\ {\color{gray} 6 }};
+\node[owlClass ,minimum size=127.57779661868975pt  , text=black] at (-194.01609158739393pt, -215.54494765290045pt)   (Node42) {PortraitOilPainting\\ {\color{gray} 2 }};
+\node[owlClass ,minimum size=127.57779661868975pt  , text=black] at (1034.0225156987772pt, 389.3590219725252pt)   (Node43) {Paint\\ {\color{gray} 2 }};
+\node[owlObjectProperty ,minimum width=88pt  , text=black] at (846.951625731014pt, -172.53532055631217pt)   (property0) {usesMedium};
+\node[owlObjectProperty ,minimum width=76pt  , text=black] at (912.2024328716653pt, -492.61095101674175pt)   (property1) {represents};
+\node[owlObjectProperty ,minimum width=120pt  , text=black] at (1241.7826889305259pt, -599.3960343749296pt)   (property2) {negativeReactionTo};
+\node[rdfsSubClassOf ,minimum width=82pt  , text=black] at (-96.83873169822793pt, -383.98468361913996pt)   (property3) {Subclass of};
+\node[rdfsSubClassOf ,minimum width=82pt  , text=black] at (221.26671185867232pt, -746.8048797515249pt)   (property4) {Subclass of};
+\node[owlObjectProperty ,minimum width=119pt  , text=black] at (1119.5782306004055pt, -813.3086707542876pt)   (property5) {positiveReactionTo};
+\node[rdfsSubClassOf ,minimum width=82pt  , text=black] at (197.79027377580292pt, -562.9783799497723pt)   (property6) {Subclass of};
+\node[rdfsSubClassOf ,minimum width=82pt  , text=black] at (535.1023998047816pt, -796.2206119328416pt)   (property7) {Subclass of};
+\node[rdfsSubClassOf ,minimum width=82pt  , text=black] at (370.3297249688997pt, -846.9964854164298pt)   (property8) {Subclass of};
+\node[rdfsSubClassOf ,minimum width=82pt  , text=black] at (332.8992095706554pt, -429.814224907928pt)   (property9) {Subclass of};
+\node[rdfsSubClassOf ,minimum width=82pt  , text=black] at (1294.3379439390408pt, -110.29537208233532pt)   (property10) {Subclass of};
+\node[owlObjectProperty ,minimum width=75pt  , text=black] at (1290.5212846156578pt, -734.1368255771338pt)   (property11) {belongsTo};
+\node[rdfsSubClassOf ,minimum width=82pt  , text=black] at (-7.529759322753009pt, -250.6173551136162pt)   (property12) {Subclass of};
+\node[owlObjectProperty ,minimum width=68pt  , text=black] at (471.4459629100419pt, 183.25282054120606pt)   (property13) {locatedIn};
+\node[owlObjectProperty ,minimum width=54pt  , text=black] at (561.7884363548364pt, 221.6647029729796pt)   (property14) {livedIn};
+\node[rdfsSubClassOf ,minimum width=82pt  , text=black] at (991.386716247931pt, 203.2069843862642pt)   (property15) {Subclass of};
+\node[rdfsSubClassOf ,minimum width=82pt  , text=black] at (568.2047956110248pt, -466.52753257589336pt)   (property16) {Subclass of};
+% Createing Inverse Property 
+\node[owlObjectProperty ,minimum width=80pt  , text=black] at (1602.8473347371296pt, -732.584807653793pt)   (property17) {succeededBy};
+% owlObjectProperty vs owlObjectProperty
+% ,minimum width=80pt vs ,minimum width=84pt
+%  vs 
+% , text=black vs , text=black
+\node[owlObjectProperty ,minimum width=84pt  , text=black] at (1602.8473347371296pt, -704.584807653793pt)   (property17) {precededBy};
+\node[owlObjectProperty ,minimum width=69pt  , text=black] at (634.8990678861378pt, -188.74044998920675pt)   (property18) {housedIn};
+\node[owlObjectProperty ,minimum width=73pt  , text=black] at (720.5682907961175pt, -152.26696867929653pt)   (property19) {createdBy};
+\node[owlObjectProperty ,minimum width=58pt  , text=black] at (936.9057583489899pt, -289.5810748898682pt)   (property20) {depicts};
+\end{tikzpicture}
+}
+ \end{center}
