@@ -1,0 +1,585 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xml:base="http://example.org/art_ontology.owl"
+         xmlns="http://example.org/art_ontology.owl#">
+
+<owl:Ontology rdf:about="http://example.org/art_ontology.owl"/>
+
+<owl:ObjectProperty rdf:about="#belongsTo">
+  <rdfs:domain rdf:resource="#Style"/>
+  <rdfs:range rdf:resource="#Age"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#represents">
+  <rdfs:domain rdf:resource="#Artwork"/>
+  <rdfs:range rdf:resource="#Style"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#createdBy">
+  <rdfs:domain rdf:resource="#Artwork"/>
+  <rdfs:range rdf:resource="#Artist"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#housedIn">
+  <rdfs:domain rdf:resource="#Artwork"/>
+  <rdfs:range rdf:resource="#Museum"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#locatedIn">
+  <rdfs:domain rdf:resource="#Museum"/>
+  <rdfs:range rdf:resource="#Region"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#negativeReactionTo">
+  <rdfs:domain rdf:resource="#Style"/>
+  <rdfs:range rdf:resource="#Style"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#positiveReactionTo">
+  <rdfs:domain rdf:resource="#Style"/>
+  <rdfs:range rdf:resource="#Style"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#depicts">
+  <rdfs:domain rdf:resource="#Artwork"/>
+  <rdfs:range rdf:resource="#Depiction"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#usesMedium">
+  <rdfs:domain rdf:resource="#Artwork"/>
+  <rdfs:range rdf:resource="#Medium"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#livedIn">
+  <rdfs:domain rdf:resource="#Artist"/>
+  <rdfs:range rdf:resource="#Region"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#precededBy">
+  <rdfs:domain rdf:resource="#Age"/>
+  <rdfs:range rdf:resource="#Age"/>
+  <owl:inverseOf rdf:resource="#succeededBy"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#succeededBy">
+  <rdfs:domain rdf:resource="#Age"/>
+  <rdfs:range rdf:resource="#Age"/>
+  <owl:inverseOf rdf:resource="#precededBy"/>
+</owl:ObjectProperty>
+
+<owl:Class rdf:about="#Artwork">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Age">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Style">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Artist">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Region">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Medium">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Paint">
+  <rdfs:subClassOf rdf:resource="#Medium"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Depiction">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Landscape">
+  <rdfs:subClassOf rdf:resource="#Depiction"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Museum">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Painting">
+  <rdfs:subClassOf rdf:resource="#Artwork"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Artwork"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#depicts"/>
+          <owl:someValuesFrom rdf:resource="#Depiction"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#usesMedium"/>
+          <owl:someValuesFrom rdf:resource="#Medium"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#OilPainting">
+  <rdfs:subClassOf rdf:resource="#Painting"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Painting"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#usesMedium"/>
+          <owl:hasValue rdf:resource="#OilPaint"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#AcrylicPainting">
+  <rdfs:subClassOf rdf:resource="#Painting"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Painting"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#usesMedium"/>
+          <owl:hasValue rdf:resource="#AcrylicPaint"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#HistoricalEventPainting">
+  <rdfs:subClassOf rdf:resource="#Painting"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Painting"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#depicts"/>
+          <owl:hasValue rdf:resource="#HistoricalEvent"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#PortraitPainting">
+  <rdfs:subClassOf rdf:resource="#Painting"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Painting"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#depicts"/>
+          <owl:hasValue rdf:resource="#Portrait"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#LandscapePainting">
+  <rdfs:subClassOf rdf:resource="#Painting"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Painting"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#depicts"/>
+          <owl:allValuesFrom rdf:resource="#Landscape"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#PortraitOilPainting">
+  <rdfs:subClassOf rdf:resource="#OilPainting"/>
+  <rdfs:subClassOf rdf:resource="#PortraitPainting"/>
+</owl:Class>
+
+<owl:NamedIndividual rdf:about="#Chalk">
+  <rdf:type rdf:resource="#Medium"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Graphite">
+  <rdf:type rdf:resource="#Medium"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AcrylicPaint">
+  <rdf:type rdf:resource="#Paint"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#OilPaint">
+  <rdf:type rdf:resource="#Paint"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#HistoricalEvent">
+  <rdf:type rdf:resource="#Depiction"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Portrait">
+  <rdf:type rdf:resource="#Depiction"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GroupScene">
+  <rdf:type rdf:resource="#Depiction"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AbstractDepiction">
+  <rdf:type rdf:resource="#Depiction"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#NaturalLandscape">
+  <rdf:type rdf:resource="#Landscape"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#UrbanLandscape">
+  <rdf:type rdf:resource="#Landscape"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PrehistoricAge">
+  <rdf:type rdf:resource="#Age"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Antiquity">
+  <rdf:type rdf:resource="#Age"/>
+  <precededBy rdf:resource="#PrehistoricAge"/>
+  <succeededBy rdf:resource="#MiddleAges"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MiddleAges">
+  <rdf:type rdf:resource="#Age"/>
+  <succeededBy rdf:resource="#GothicAge"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GothicAge">
+  <rdf:type rdf:resource="#Age"/>
+  <succeededBy rdf:resource="#Renaissance"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Renaissance">
+  <rdf:type rdf:resource="#Age"/>
+  <succeededBy rdf:resource="#NewAge"/>
+  <rdf:type rdf:resource="#Style"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#NewAge">
+  <rdf:type rdf:resource="#Age"/>
+  <succeededBy rdf:resource="#ModernAge"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ModernAge">
+  <rdf:type rdf:resource="#Age"/>
+  <succeededBy rdf:resource="#ContemporaryAge"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ContemporaryAge">
+  <rdf:type rdf:resource="#Age"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#WesternEurope">
+  <rdf:type rdf:resource="#Region"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#EasternEurope">
+  <rdf:type rdf:resource="#Region"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#NorthAmerica">
+  <rdf:type rdf:resource="#Region"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SouthAmerica">
+  <rdf:type rdf:resource="#Region"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Asia">
+  <rdf:type rdf:resource="#Region"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Africa">
+  <rdf:type rdf:resource="#Region"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Australia">
+  <rdf:type rdf:resource="#Region"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Paleolithic">
+  <rdf:type rdf:resource="#Style"/>
+  <belongsTo rdf:resource="#PrehistoricAge"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Neolithic">
+  <rdf:type rdf:resource="#Style"/>
+  <belongsTo rdf:resource="#PrehistoricAge"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AncientEgyptian">
+  <rdf:type rdf:resource="#Style"/>
+  <belongsTo rdf:resource="#Antiquity"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AncientGreek">
+  <rdf:type rdf:resource="#Style"/>
+  <belongsTo rdf:resource="#Antiquity"/>
+  <positiveReactionTo rdf:resource="#AncientEgyptian"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Roman">
+  <rdf:type rdf:resource="#Style"/>
+  <belongsTo rdf:resource="#Antiquity"/>
+  <positiveReactionTo rdf:resource="#AncientGreek"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Byzantine">
+  <rdf:type rdf:resource="#Style"/>
+  <belongsTo rdf:resource="#MiddleAges"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Romanesque">
+  <rdf:type rdf:resource="#Style"/>
+  <belongsTo rdf:resource="#MiddleAges"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Gothic">
+  <rdf:type rdf:resource="#Style"/>
+  <belongsTo rdf:resource="#GothicAge"/>
+  <positiveReactionTo rdf:resource="#Romanesque"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ItalianRenaissance">
+  <rdf:type rdf:resource="#Style"/>
+  <belongsTo rdf:resource="#Renaissance"/>
+  <negativeReactionTo rdf:resource="#Gothic"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#NordicRenaissance">
+  <rdf:type rdf:resource="#Style"/>
+  <belongsTo rdf:resource="#Renaissance"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Baroque">
+  <rdf:type rdf:resource="#Style"/>
+  <belongsTo rdf:resource="#NewAge"/>
+  <negativeReactionTo rdf:resource="#Renaissance"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Rococo">
+  <rdf:type rdf:resource="#Style"/>
+  <belongsTo rdf:resource="#NewAge"/>
+  <negativeReactionTo rdf:resource="#Baroque"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Classicism">
+  <rdf:type rdf:resource="#Style"/>
+  <belongsTo rdf:resource="#NewAge"/>
+  <negativeReactionTo rdf:resource="#Rococo"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Romanticism">
+  <rdf:type rdf:resource="#Style"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Realism">
+  <rdf:type rdf:resource="#Style"/>
+  <belongsTo rdf:resource="#ModernAge"/>
+  <negativeReactionTo rdf:resource="#Romanticism"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Impressionism">
+  <rdf:type rdf:resource="#Style"/>
+  <belongsTo rdf:resource="#ModernAge"/>
+  <negativeReactionTo rdf:resource="#Realism"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PostImpressionism">
+  <rdf:type rdf:resource="#Style"/>
+  <belongsTo rdf:resource="#ModernAge"/>
+  <positiveReactionTo rdf:resource="#Impressionism"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Expressionism">
+  <rdf:type rdf:resource="#Style"/>
+  <belongsTo rdf:resource="#ModernAge"/>
+  <negativeReactionTo rdf:resource="#Realism"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Cubism">
+  <rdf:type rdf:resource="#Style"/>
+  <belongsTo rdf:resource="#ModernAge"/>
+  <negativeReactionTo rdf:resource="#Impressionism"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Futurism">
+  <rdf:type rdf:resource="#Style"/>
+  <belongsTo rdf:resource="#ModernAge"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Dadaism">
+  <rdf:type rdf:resource="#Style"/>
+  <belongsTo rdf:resource="#ModernAge"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Surrealism">
+  <rdf:type rdf:resource="#Style"/>
+  <belongsTo rdf:resource="#ModernAge"/>
+  <positiveReactionTo rdf:resource="#Dadaism"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PopArt">
+  <rdf:type rdf:resource="#Style"/>
+  <belongsTo rdf:resource="#ContemporaryAge"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ConceptualArt">
+  <rdf:type rdf:resource="#Style"/>
+  <belongsTo rdf:resource="#ContemporaryAge"/>
+  <positiveReactionTo rdf:resource="#PopArt"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#VincentVanGogh">
+  <rdf:type rdf:resource="#Artist"/>
+  <livedIn rdf:resource="#WesternEurope"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#JohannesVermeer">
+  <rdf:type rdf:resource="#Artist"/>
+  <livedIn rdf:resource="#WesternEurope"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#LeonardoDaVinci">
+  <rdf:type rdf:resource="#Artist"/>
+  <livedIn rdf:resource="#WesternEurope"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#FranciscoGoya">
+  <rdf:type rdf:resource="#Artist"/>
+  <livedIn rdf:resource="#WesternEurope"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AndyWarhol">
+  <rdf:type rdf:resource="#Artist"/>
+  <livedIn rdf:resource="#NorthAmerica"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ClaudeMonet">
+  <rdf:type rdf:resource="#Artist"/>
+  <livedIn rdf:resource="#WesternEurope"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#LouvreMuseum">
+  <rdf:type rdf:resource="#Museum"/>
+  <locatedIn rdf:resource="#WesternEurope"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MoMA">
+  <rdf:type rdf:resource="#Museum"/>
+  <locatedIn rdf:resource="#NorthAmerica"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PradoMuseum">
+  <rdf:type rdf:resource="#Museum"/>
+  <locatedIn rdf:resource="#WesternEurope"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#KatheKollwitzMuseum">
+  <rdf:type rdf:resource="#Museum"/>
+  <locatedIn rdf:resource="#WesternEurope"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#BibliotecaRealeTurin">
+  <rdf:type rdf:resource="#Museum"/>
+  <locatedIn rdf:resource="#WesternEurope"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Mauritshuis">
+  <rdf:type rdf:resource="#Museum"/>
+  <locatedIn rdf:resource="#WesternEurope"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MonaLisa">
+  <rdf:type rdf:resource="#PortraitOilPainting"/>
+  <createdBy rdf:resource="#LeonardoDaVinci"/>
+  <depicts rdf:resource="#Portrait"/>
+  <usesMedium rdf:resource="#OilPaint"/>
+  <represents rdf:resource="#ItalianRenaissance"/>
+  <housedIn rdf:resource="#LouvreMuseum"/>
+  <rdf:type rdf:resource="#Painting"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PortraitOfAManInRedChalk">
+  <rdf:type rdf:resource="#PortraitPainting"/>
+  <createdBy rdf:resource="#LeonardoDaVinci"/>
+  <depicts rdf:resource="#Portrait"/>
+  <usesMedium rdf:resource="#Chalk"/>
+  <represents rdf:resource="#ItalianRenaissance"/>
+  <housedIn rdf:resource="#BibliotecaRealeTurin"/>
+  <rdf:type rdf:resource="#Painting"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GirlWithAPearlEarring">
+  <rdf:type rdf:resource="#PortraitOilPainting"/>
+  <createdBy rdf:resource="#JohannesVermeer"/>
+  <depicts rdf:resource="#Portrait"/>
+  <usesMedium rdf:resource="#OilPaint"/>
+  <represents rdf:resource="#Baroque"/>
+  <housedIn rdf:resource="#Mauritshuis"/>
+  <rdf:type rdf:resource="#Painting"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#CampbellsSoupCans">
+  <rdf:type rdf:resource="#AcrylicPainting"/>
+  <createdBy rdf:resource="#AndyWarhol"/>
+  <depicts rdf:resource="#AbstractDepiction"/>
+  <usesMedium rdf:resource="#AcrylicPaint"/>
+  <represents rdf:resource="#PopArt"/>
+  <housedIn rdf:resource="#MoMA"/>
+  <rdf:type rdf:resource="#Painting"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ThirdOfMay1808">
+  <rdf:type rdf:resource="#HistoricalEventPainting"/>
+  <createdBy rdf:resource="#FranciscoGoya"/>
+  <depicts rdf:resource="#HistoricalEvent"/>
+  <usesMedium rdf:resource="#OilPaint"/>
+  <represents rdf:resource="#Romanticism"/>
+  <housedIn rdf:resource="#PradoMuseum"/>
+  <rdf:type rdf:resource="#OilPainting"/>
+  <rdf:type rdf:resource="#Painting"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Haystacks">
+  <rdf:type rdf:resource="#LandscapePainting"/>
+  <createdBy rdf:resource="#ClaudeMonet"/>
+  <housedIn rdf:resource="#KatheKollwitzMuseum"/>
+  <depicts rdf:resource="#NaturalLandscape"/>
+  <represents rdf:resource="#Impressionism"/>
+  <usesMedium rdf:resource="#OilPaint"/>
+  <rdf:type rdf:resource="#OilPainting"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StarryNightOverTheRhone">
+  <rdf:type rdf:resource="#LandscapePainting"/>
+  <createdBy rdf:resource="#VincentVanGogh"/>
+  <depicts rdf:resource="#NaturalLandscape"/>
+  <usesMedium rdf:resource="#OilPaint"/>
+  <represents rdf:resource="#PostImpressionism"/>
+  <housedIn rdf:resource="#MoMA"/>
+  <rdf:type rdf:resource="#OilPainting"/>
+</owl:NamedIndividual>
+
+
+</rdf:RDF>
