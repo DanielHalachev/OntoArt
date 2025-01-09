@@ -159,12 +159,12 @@
   </owl:equivalentClass>
 </owl:Class>
 
-<owl:Class rdf:about="#HistoricalEventPainting">
+<owl:Class rdf:about="#HistoricalEventOilPainting">
   <rdfs:subClassOf rdf:resource="#Painting"/>
   <owl:equivalentClass>
     <owl:Class>
       <owl:intersectionOf rdf:parseType="Collection">
-        <rdf:Description rdf:about="#Painting"/>
+        <rdf:Description rdf:about="#OilPainting"/>
         <owl:Restriction>
           <owl:onProperty rdf:resource="#depicts"/>
           <owl:hasValue rdf:resource="#HistoricalEvent"/>
@@ -172,6 +172,7 @@
       </owl:intersectionOf>
     </owl:Class>
   </owl:equivalentClass>
+  <rdfs:subClassOf rdf:resource="#OilPainting"/>
 </owl:Class>
 
 <owl:Class rdf:about="#PortraitPainting">
@@ -450,6 +451,10 @@
   <positiveReactionTo rdf:resource="#PopArt"/>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#Michelangelo">
+  <rdf:type rdf:resource="#Artist"/>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#VincentVanGogh">
   <rdf:type rdf:resource="#Artist"/>
   <livedIn rdf:resource="#WesternEurope"/>
@@ -480,6 +485,11 @@
   <livedIn rdf:resource="#WesternEurope"/>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#GalleriaDellAccademia">
+  <rdf:type rdf:resource="#Museum"/>
+  <locatedIn rdf:resource="#WesternEurope"/>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#LouvreMuseum">
   <rdf:type rdf:resource="#Museum"/>
   <locatedIn rdf:resource="#WesternEurope"/>
@@ -508,6 +518,13 @@
 <owl:NamedIndividual rdf:about="#Mauritshuis">
   <rdf:type rdf:resource="#Museum"/>
   <locatedIn rdf:resource="#WesternEurope"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#David">
+  <rdf:type rdf:resource="#Artwork"/>
+  <createdBy rdf:resource="#Michelangelo"/>
+  <represents rdf:resource="#ItalianRenaissance"/>
+  <housedIn rdf:resource="#GalleriaDellAccademia"/>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#MonaLisa">
@@ -551,13 +568,12 @@
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ThirdOfMay1808">
-  <rdf:type rdf:resource="#HistoricalEventPainting"/>
+  <rdf:type rdf:resource="#HistoricalEventOilPainting"/>
   <createdBy rdf:resource="#FranciscoGoya"/>
   <depicts rdf:resource="#HistoricalEvent"/>
   <usesMedium rdf:resource="#OilPaint"/>
   <represents rdf:resource="#Romanticism"/>
   <housedIn rdf:resource="#PradoMuseum"/>
-  <rdf:type rdf:resource="#OilPainting"/>
   <rdf:type rdf:resource="#Painting"/>
 </owl:NamedIndividual>
 

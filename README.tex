@@ -13,10 +13,9 @@
 \usepackage{svg}
 \usepackage{tikz}
 \usepackage{helvet}
-\usetikzlibrary{decorations.markings,decorations.shapes,decorations,arrows,automata,backgrounds,petri,shapes.geometric}
 \usepackage{xcolor}
 \usepackage[style=numeric, sorting=none, language=auto]{biblatex}
-
+\usepackage[hidelinks]{hyperref}
 \addbibresource{sources.bib}
 \allowdisplaybreaks
 
@@ -25,7 +24,18 @@
 \title{Онтология на основните стилове в изобразителното изкуство и техните отличителни картини}
 \maketitle
 
-\section*{Атомарни концепти}
+\pagebreak
+\tableofcontents
+\pagebreak
+\section{Въведение}
+Главната цел на проекта е да се създаде структурата на онтология, която представя основните епохи от човешкото развитие, типичните за тях стилове от изобразителното изкуство и връзките между тях, и знакови картини от дадени стилове. Онтологията съдържа:
+\begin{itemize}
+  \item 17 концепта
+  \item 12 роли
+  \item 71 константи.
+\end{itemize}
+\section{Структура}
+\subsection{Атомарни концепти}
 \begin{itemize}
   \item \textbf{Artwork} - произведение на изкуството
   \item \textbf{Age} - епоха в човешкото развитие
@@ -36,25 +46,24 @@
   \item \textbf{Depiction} - какво изобразява картината
   \item \textbf{Museum} - музей, в който се помещава картината днес
 \end{itemize}
-
-\section*{Атомарни подконцепти}
+\subsection{Атомарни подконцепти}
 \begin{align*}
   &\text{Paint} \sqsubseteq \text{Medium} \\
   &\text{Landscape} \sqsubseteq \text{Depiction}
 \end{align*}
 
-\section*{Неатомарни концепти}
+\subsection{Неатомарни концепти}
 \begin{align*}
-  \text{Painting} &\doteq \text{[AND Artwork, [EXISTS 1 :depicts], [EXISTS 1 :hasMedium]]} \\
-  \text{OilPainting} &\doteq \text{[AND Painting, [FILLS :hasMedium, OilPaint]]} \\
-  \text{AcrylicPainting} &\doteq \text{[AND Painting, [FILLS :hasMedium, AcrylicPaint]]} \\
-  \text{HistoricalEventPainting} &\doteq \text{[AND Painting, [FILLS :depicts, HistoricalEvent]]} \\
-  \text{PortraitPainting} &\doteq \text{[AND Painting, [FILLS :depicts, Portrait]]} \\
-  \text{LandscapePainting} &\doteq \text{[AND Painting, [ALL :depicts, Landscape]]} \\
-  \text{PortraitOilPainting} &\doteq \text{[AND OilPainting, PortraitPainting]}
+  \text{Painting} &\doteq \text{[AND Artwork [EXISTS 1 :depicts] [EXISTS 1 :hasMedium]]} \\
+  \text{OilPainting} &\doteq \text{[AND Painting [FILLS :hasMedium OilPaint]]} \\
+  \text{AcrylicPainting} &\doteq \text{[AND Painting [FILLS :hasMedium AcrylicPaint]]} \\
+  \text{PortraitPainting} &\doteq \text{[AND Painting [FILLS :depicts Portrait]]} \\
+  \text{LandscapePainting} &\doteq \text{[AND Painting [ALL :depicts Landscape]]} \\
+  \text{PortraitOilPainting} &\doteq \text{[AND OilPainting PortraitPainting]} \\
+  \text{HistoricalEventOilPainting} &\doteq \text{[AND OilPainting [FILLS :depicts HistoricalEvent]]} \\
 \end{align*}
 
-\section*{Роли}
+\subsection{Роли}
 \begin{align*}
   \text{belongsTo} &: \text{Style} \to \text{Age}\\
   \text{represents} &: \text{Artwork} \to \text{Style}\\
@@ -69,316 +78,151 @@
   \text{precededBy} &: \text{Age} \to \text{Age}\\
   \text{succeededBy} &: \text{Age} \to \text{Age}.
 \end{align*}
-\begin{align*}
-  &\text{belongsTo}(Paleolithic, PrehistoricAge)\\\\
-  &\text{belongsTo}(Neolithic, PrehistoricAge)\\\\
-  &\text{belongsTo}(AncientEgyptian, Antiquity)\\\\
-  &\text{belongsTo}(AncientGreek, Antiquity) \\
-  &\text{positiveReactionTo}(AncientGreek, AncientEgyptian)\\\\
-  &\text{belongsTo}(Roman, Antiquity) \\
-  &\text{positiveReactionTo}(Roman, AncientGreek)\\\\
-  &\text{belongsTo}(Byzantine, MiddleAges)\\\\
-  &\text{belongsTo}(Romanesque, MiddleAges)\\\\
-  &\text{belongsTo}(Gothic, GothicAge) \\
-  &\text{positiveReactionTo}(Gothic, Romanesque)\\\\
-  &\text{belongsTo}(ItalianRenaissance, Renaissance) \\
-  &\text{negativeReactionTo}(ItalianRenaissance, Gothic)\\\\
-  &\text{belongsTo}(NordicRenaissance, Renaissance)\\\\
-  &\text{belongsTo}(Baroque, NewAge) \\
-  &\text{negativeReactionTo}(Baroque, Renaissance)\\\\
-  &\text{belongsTo}(Rococo, NewAge) \\
-  &\text{negativeReactionTo}(Rococo, Baroque)\\\\
-  &\text{belongsTo}(Classicism, NewAge) \\
-  &\text{negativeReactionTo}(Classicism, Rococo)\\\\
-  &\text{belongsTo}(Romanticism, NewAge) \\
-  &\text{belongsTo}(Realism, ModernAge) \\
-  &\text{negativeReactionTo}(Realism, Romanticism)\\\\
-  &\text{belongsTo}(Impressionism, ModernAge) \\
-  &\text{negativeReactionTo}(Impressionism, Realism)\\\\
-  &\text{belongsTo}(PostImpressionism, ModernAge) \\
-  &\text{positiveReactionTo}(PostImpressionism, Impressionism)\\\\
-  &\text{belongsTo}(Expressionism, ModernAge) \\
-  &\text{negativeReactionTo}(Expressionism, Realism)\\\\
-  &\text{belongsTo}(Cubism, ModernAge) \\
-  &\text{negativeReactionTo}(Cubism, Impressionism)\\\\
-  &\text{belongsTo}(Futurism, ModernAge)\\\\
-  &\text{belongsTo}(Dadaism, ModernAge)\\\\
-  &\text{belongsTo}(Surrealism, ModernAge) \\
-  &\text{positiveReactionTo}(Surrealism, Dadaism)\\\\
-  &\text{belongsTo}(PopArt, ContemporaryAge) \\\\
-  &\text{belongsTo}(ConceptualArt, ContemporaryAge) \\
-  &\text{positiveReactionTo}(ConceptualArt, PopArt) \\\\
-  &\text{precededBy}(Antiquity, PrehistoricAge) \\
-  &\text{succeededBy}(Antiquity, MiddleAges) \\
-  &\text{precededBy}(MiddleAges, Antiquity) \\
-  &\text{succeededBy}(MiddleAges, GothicAge) \\
-  &\text{precededBy}(GothicAge, MiddleAges) \\
-  &\text{succeededBy}(GothicAge, Renaissance) \\
-  &\text{precededBy}(Renaissance, GothicAge) \\
-  &\text{succeededBy}(Renaissance, NewAge) \\
-  &\text{precededBy}(NewAge, Renaissance) \\
-  &\text{succeededBy}(NewAge, ModernAge) \\
-  &\text{precededBy}(ModernAge, NewAge) \\
-  &\text{succeededBy}(ModernAge, ContemporaryAge) \\
-  &\text{precededBy}(ContemporaryAge, ModernAge)
-\end{align*}
-
 От тях \emph{precededBy} и \emph{succeededBy} са противоположни и транзитивни, а \emph{createdBy} и \emph{housedIn} са функционални.
 
-\section*{Константи}
-\begin{itemize}
-  \item \textbf{Artwork}
-    \begin{align*}
-      \text{Michelangelo} &\to \text{Artist}\\
-      \text{David} &\to \text{Artwork}
-    \end{align*}
-    \begin{align*}
-      &livedIn(Michelangelo, WesternEurope)\\
-      &createdBy(David, Michelangelo)\\
-      &represents(David, ItalianRenaissance)\\
-      &housedIn(David, GalleriaDellAccademia)
-    \end{align*}
+\section{Константи}
+\input{constants.tex}
 
-  \item \textbf{Age}
-    \begin{align*}
-      \text{PrehistoricAge} &\to \text{Age}\\
-      \text{Antiquity} &\to \text{Age}\\
-      \text{MiddleAges} &\to \text{Age}\\
-      \text{GothicAge} &\to \text{Age}\\
-      \text{Renaissance} &\to \text{Age}\\
-      \text{NewAge} &\to \text{Age}\\
-      \text{ModernAge} &\to \text{Age}\\
-      \text{ContemporaryAge} &\to \text{Age}
-    \end{align*}
-  \item \textbf{Style}
-    \begin{align*}
-      \text{Paleolithic} &\to \text{Style}\\
-      \text{Neolithic} &\to \text{Style}\\
-      \text{AncientEgyptian} &\to \text{Style}\\
-      \text{AncientGreek} &\to \text{Style}\\
-      \text{Roman} &\to \text{Style}\\
-      \text{Byzantine} &\to \text{Style}\\
-      \text{Romanesque} &\to \text{Style}\\
-      \text{Gothic} &\to \text{Style}\\
-      \text{ItalianRenaissance} &\to \text{Style}\\
-      \text{NordicRenaissance} &\to \text{Style}\\
-      \text{Baroque} &\to \text{Style}\\
-      \text{Rococo} &\to \text{Style}\\
-      \text{Classicism} &\to \text{Style}\\
-      \text{Romanticism} &\to \text{Style}\\
-      \text{Realism} &\to \text{Style}\\
-      \text{Impressionism} &\to \text{Style}\\
-      \text{PostImpressionism} &\to \text{Style}\\
-      \text{Expressionism} &\to \text{Style}\\
-      \text{Cubism} &\to \text{Style}\\
-      \text{Futurism} &\to \text{Style}\\
-      \text{Dadaism} &\to \text{Style}\\
-      \text{Surrealism} &\to \text{Style}\\
-      \text{PopArt} &\to \text{Style}\\
-      \text{ConceptualArt} &\to \text{Style}
-    \end{align*}
-  \item \textbf{Medium}
-    \begin{align*}
-      \text{Chalk} &\to \text{Medium}\\
-      \text{Graphite} &\to \text{Medium}
-    \end{align*}
-  \item \textbf{Paint} $\sqsubseteq$ Medium
-    \begin{align*}
-      \text{OilPaint} &\to \text{Paint}\\
-      \text{AcrylicPaint} &\to \text{Paint}
-    \end{align*}
-  \item \textbf{Depiction}
-    \begin{align*}
-      \text{HistoricalEvent} &\to \text{Depiction}\\
-      \text{Portrait} &\to \text{Depiction}\\
-      \text{GroupScene} &\to \text{Depiction}\\
-      \text{AbstractDepiction} &\to \text{Depiction}
-    \end{align*}
-  \item \textbf{Landscape} $\sqsubseteq$ Depiction
-    \begin{align*}
-      \text{NaturalLandscape} &\to \text{Landscape}\\
-      \text{UrbanLandscape} &\to \text{Landscape}
-    \end{align*}
-  \item \textbf{Region}
-    \begin{align*}
-      \text{Asia} &\to \text{Region}\\
-      \text{Africa} &\to \text{Region}\\
-      \text{Australia} &\to \text{Region}\\
-      \text{NorthAmerica} &\to \text{Region}\\
-      \text{SouthAmerica} &\to \text{Region}\\
-      \text{EasternEurope} &\to \text{Region}\\
-      \text{WesternEurope} &\to \text{Region}
-    \end{align*}
-\end{itemize}
-\section*{Визуализация}
+\section{Визуализация}
 \begin{figure}[H]
   \centering
   % \includesvg[width=\linewidth]{images/onto.svg}
   \includegraphics[width=\linewidth]{images/onto.png}  
+  \caption{Визуализация на онтологията в WebVOWL}
 \end{figure}
-\section*{Представители на изброените стилове и епохи}
-\subsubsection*{Художници}
-\begin{itemize}
-  \item $\text{VincentVanGogh} \to \text{Artist}$
-    \begin{align*}
-      livedIn(VincentVanGogh, WesternEurope)
-    \end{align*}
-  \item $\text{JohannesVermeer} \to \text{Artist}$
-    \begin{align*}
-      livedIn(JohannesVermeer, WesternEurope)
-    \end{align*}
-  \item $\text{LeonardoDaVinci} \to \text{Artist}$
-    \begin{align*}
-      livedIn(LeonardoDaVinci, WesternEurope)
-    \end{align*}
-  \item $\text{FranciscoGoya} \to \text{Artist}$
-    \begin{align*}
-      livedIn(FranciscoGoya, WesternEurope)
-    \end{align*}
-  \item $\text{AndyWarhol} \to \text{Artist}$
-    \begin{align*}
-      livedIn(AndyWarhol, NorthAmerica)
-    \end{align*}
-  \item $\text{ClaudeMonet} \to \text{Artist}$
-    \begin{align*}
-      livedIn(ClaudeMonet, WesternEurope)
-    \end{align*}
-\end{itemize}
 
-\subsubsection*{Музеи}
-\begin{itemize}
-  \item $\text{LouvreMuseum} \to \text{Museum}$
-    \begin{align*}
-      locatedIn(LouvreMuseum, WesternEurope)
-    \end{align*}
-  \item $\text{MoMA} \to \text{Museum}$
-    \begin{align*}
-      locatedIn(MoMA, NorthAmerica)
-    \end{align*}
-  \item $\text{PradoMuseum} \to \text{Museum}$
-    \begin{align*}
-      locatedIn(PradoMuseum, WesternEurope)
-    \end{align*}
-  \item $\text{KatheKollwitzMuseum} \to \text{Museum}$
-    \begin{align*}
-      locatedIn(KatheKollwitzMuseum, WesternEurope)
-    \end{align*}
-  \item $\text{BibliotecaRealeTurin} \to \text{Museum}$
-    \begin{align*}
-      locatedIn(BibliotecaRealeTurin, WesternEurope)
-    \end{align*}
-  \item $\text{Mauritshuis} \to \text{Museum}$
-    \begin{align*}
-      locatedIn(Mauritshuis, WesternEurope)
-    \end{align*}
-\end{itemize}
+\section{Изводи}
+\subsection{Изводи от вида $KB \vDash (d \sqsubseteq e)$}
+Ще докажем, че $\text{PortraitOilPainting} \sqsubseteq \text{Artwork}$:
+\begin{align*}
+  \text{PortraitOilPainting} 
+  \doteq & \text{[AND PortraitPainting OilPainting]} \\
+  \doteq & \text{[AND} \\
+          & \quad \text{[AND Painting [FILLS :depicts Portrait]]} \\
+          & \quad \text{[AND Painting [FILLS :usesMedium OilPaint]]]} \\
+  \doteq & \text{[AND} \\
+          & \quad \text{Painting} \\
+          & \quad \text{[FILLS :depicts Portrait]} \\
+          & \quad \text{[FILLS :usesMedium OilPaint]]} \\
+  \doteq & \text{[AND} \\
+          & \quad \text{[AND Artwork} \\
+          & \qquad \text{[EXISTS 1 :depicts]} \\
+          & \qquad \text{[EXISTS 1 :hasMedium]]} \\
+          & \quad \text{[FILLS :depicts Portrait]} \\
+          & \quad \text{[FILLS :usesMedium OilPaint]]} \\
+  \doteq & \text{[AND Artwork} \\
+          & \quad \text{[EXISTS 1 :depicts]} \\
+          & \quad \text{[EXISTS 1 :usesMedium]} \\
+          & \quad \text{[FILLS :depicts Portrait]} \\
+          & \quad \text{[FILLS :usesMedium OilPaint]]} \\
+  \doteq & \text{[AND Artwork} \\
+          & \quad \text{[FILLS :depicts Portrait]} \\
+          & \quad \text{[FILLS :usesMedium OilPaint]]} \\
+  \sqsubseteq & \text{Artwork}
+\end{align*}
 
-\subsection*{Картини}
-\begin{itemize}
-  \item $\text{MonaLisa} \to \text{PortraitPainting, PortraitOilPainting}$
-    \begin{figure}[H]
-      \centering
-      \includegraphics[width=0.25\linewidth]{images/monalisa.jpg}
-    \end{figure}
-    \begin{align*}
-      &createdBy(MonaLisa, LeonardoDaVinci)\\
-      &depicts(MonaLisa, Portrait)\\
-      &usesMedium(MonaLisa, OilPaint)\\
-      &represents(MonaLisa, ItalianRenaissance)\\
-      &housedIn(MonaLisa, LouvreMuseum)
-    \end{align*}
-  \item $\text{PortraitOfAManInRedChalk} \to \text{PortraitPainting}$
-    \begin{figure}[H]
-      \centering
-      \includegraphics[width=0.35\linewidth]{images/maninredchalk.jpg}
-    \end{figure}
-    \begin{align*}
-      &createdBy(PortraitOfAManInRedChalk, LeonardoDaVinci)\\
-      &depicts(PortraitOfAManInRedChalk, Portrait)\\
-      &usesMedium(PortraitOfAManInRedChalk, Chalk)\\
-      &represents(PortraitOfAManInRedChalk, ItalianRenaissance)\\
-      &locatedIn(PortraitOfAManInRedChalk, BibliotecaRealeTurin)
-    \end{align*}
-  \item $\text{GirlWithAPearlEarring} \to \text{PortraitOilPainting, PortraitPainting}$
-    \begin{figure}[H]
-      \centering
-      \includegraphics[width=0.35\linewidth]{images/girlwithpearlearring.jpg}
-    \end{figure}
-    \begin{align*}
-      &createdBy(GirlWithAPearlEarring, JohannesVermeer)\\
-      &depicts(GirlWithAPearlEarring, Portrait)\\
-      &usesMedium(GirlWithAPearlEarring, OilPaint)\\
-      &represents(GirlWithAPearlEarring, Baroque)\\
-      &housedIn(GirlWithAPearlEarring, Mauritshuis)
-    \end{align*}
-  \item $\text{CampbellsSoupCans} \to \text{AcrylicPainting}$
-    \begin{figure}[H]
-      \centering
-      \includegraphics[width=\linewidth]{images/campbellcans.jpg}
-    \end{figure}
-    \begin{align*}
-      &createdBy(CampbellsSoupCans, AndyWarhol)\\
-      &depicts(CampbellsSoupCans, AbstractDepiction)\\
-      &usesMedium(CampbellsSoupCans, AcrylicPaint)\\
-      &represents(CampbellsSoupCans, PopArt)\\
-      &housedIn(CampbellsSoupCans, MoMA)\\
-      &livedIn(AndyWarhol, NorthAmerica)
-    \end{align*}
-  \item $\text{ThirdOfMay1808} \to \text{HistoricalEventPainting}$
-    \begin{figure}[H]
-      \centering
-      \includegraphics[width=\linewidth]{images/thirdofmay.jpg}
-    \end{figure}
-    \begin{align*}
-      &createdBy(ThirdOfMay1808, FranciscoGoya)\\
-      &depicts(ThirdOfMay1808, HistoricalEvent)\\
-      &usesMedium(ThirdOfMay1808, OilPaint)\\
-      &represents(ThirdOfMay1808, Romanticism)\\
-      &housedIn(ThirdOfMay1808, PradoMuseum)
-    \end{align*}
-  \item $\text{Haystacks} \to \text{LandscapePainting}$
-    \begin{figure}[H]
-      \centering
-      \includegraphics[width=\linewidth]{images/haystacks.jpg}
-    \end{figure}
-    \begin{align*}
-      &\text{createdBy}(\text{Haystacks}, \text{ClaudeMonet})\\
-      &\text{housedIn}(\text{Haystacks}, \text{ArtInstituteOfChicago})\\
-      &\text{depicts}(\text{Haystacks}, \text{NaturalLandscape})\\
-      &\text{represents}(\text{Haystacks}, \text{Impressionism})\\
-      &\text{usesMedium}(\text{Haystacks}, \text{OilPaint})
-    \end{align*}
-  \item $\text{StarryNightOverTheRhone} \to \text{LandscapePainting}$
-    \begin{figure}[H]
-      \centering
-      \includegraphics[width=\linewidth]{images/starrynightovertherhone.jpg}
-    \end{figure}
-    \begin{align*}
-      &createdBy(StarryNightOverTheRhone, VincentVanGogh)\\
-      &depicts(StarryNightOverTheRhone, NaturalLandscape)\\
-      &usesMedium(StarryNightOverTheRhone, OilPaint)\\
-      &represents(StarryNightOverTheRhone, PostImpressionism)\\
-      &housedIn(StarryNightOverTheRhone, MoMA)
-    \end{align*}
-\end{itemize}
-\section*{Заявки}
+\subsection{Изводи от вида $KB \vDash (c \rightarrow e)$}
+Ще докажем, че $\text{GirlWithAPearlEarring} \rightarrow \text{PortraitOilPainting}$:
+\begin{align*}
+  \text{GirlWithAPearlEarring} 
+  \rightarrow & \text{[AND}\\
+              & \quad \text{\textcolor{blue}{Artwork}} \\
+              & \quad \text{\textcolor{blue}{[FILLS :depicts Portrait]}} \\
+              & \quad \text{[FILLS :createdBy JohannesVermeer]} \\
+              & \quad \text{\textcolor{blue}{[FILLS :usesMedium OilPaint]}} \\
+              & \quad \text{[FILLS :represents Baroque]} \\
+              & \quad \text{[FILLS :housedIn Mauritshuis]]} \\
+\end{align*}
+
+
+\begin{align*}
+  \text{PortraitOilPainting}\doteq & \text{[AND}\\
+  & \quad \text{\textcolor{blue}{Artwork}} \\
+  & \quad \text{\textcolor{blue}{[FILLS :depicts Portrait]}} \\
+  & \quad \text{\textcolor{blue}{[FILLS :usesMedium OilPaint]}]} \\
+\end{align*}
+\subsection{Класификация}
+Ще въведем концепта $\text{HistoricalEventPainting}\doteq \text{[AND Painting [FILLS :depicts HistoricalEvent]]}$, за който очакваме:
+\begin{align*}
+  \text{Painting} \sqsubseteq \text{HistoricalEventPainting} \sqsubseteq \text{HistoricalEventOilPainting}
+\end{align*}
+В действителност, 
+\begin{align*}
+  S =& \left\{\text{Painting}\right\}\\
+  G =& \left\{\text{HistoricalEventOilPainting}\right\}
+\end{align*}
+Окончателно:
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \node (Thing) at (0,0) {Thing};
+            \node (Artwork) at (0,-1.5) {Artwork};
+            \node (Painting) at (0,-3) {Painting};
+            \node (OilPainting) at (-2,-4.5) {OilPainting};
+            \node (HistoricalEventOilPainting) at (-1,-6) {HistoricalEventOilPainting};
+            \node (Ellipsis) at (2,-4.5) { ... };
+
+            \draw[->] (Thing) -- (Artwork);
+            \draw[->] (Artwork) -- (Painting);
+            \draw[->] (Painting) -- (OilPainting);
+            \draw[->] (Painting) -- (HistoricalEventOilPainting);
+            \draw[->] (Painting) -- (Ellipsis);
+        \end{tikzpicture}
+    \end{minipage}%
+    \hspace{1cm} % Add space between diagrams
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \node (Thing) at (0,0) {Thing};
+            \node (Artwork) at (0,-1.5) {Artwork};
+            \node (Painting) at (0,-3) {Painting};
+            \node (OilPainting) at (-3,-4) {OilPainting};
+            \node (HistoricalEventPainting) at (0,-4.5) {\textcolor{red}{HistoricalEventPainting}};
+            \node (HistoricalEventOilPainting) at (-1,-6) {HistoricalEventOilPainting};
+            \node (Ellipsis) at (3,-4) { ... };
+
+            \draw[->] (Thing) -- (Artwork);
+            \draw[->] (Artwork) -- (Painting);
+            \draw[->] (Painting) -- (OilPainting);
+            \draw[->] (Painting) -- (HistoricalEventPainting);
+            \draw[->] (Painting) -- (Ellipsis);
+            \draw[->] (HistoricalEventPainting) -- (HistoricalEventOilPainting);
+            \draw[->] (OilPainting) -- (HistoricalEventOilPainting);  % Missing connection added here
+        \end{tikzpicture}
+    \end{minipage}
+    \caption{Класификация на новия концепт \emph{HistoricalEventPainting}}
+\end{figure}
+\pagebreak
+
+\section{Заявки към БД}
 Примерните заявки по-долу могат да бъдат изразени чрез разширение на езика $\mathcal{DL}$, което поддържа променливи и отрицания\cite{halReasoningDescription}.
 \begin{itemize}
   \item Да се намери всяка картина, която е изложени в музей, разположен  в регион, различен от този, където е живял художникът ѝ
     \begin{align*}
-      \text{MovedPainting } \doteq
-      &\text{Painting } \sqcap\\
-      &\exists \text{ createdBy}.(\text{Artist }\sqcap \exists \text{ :livedIn}.\text{?artistRegion}) \sqcap\\
-      &\exists \neg(\text{ housedIn}.(\text{Museum} \sqcap \exists \text{ :locatedIn}.\text{?artistRegion}))
+      \text{MovedPainting} \doteq
+      &\text{[AND}\\
+      &\quad\text{[FILLS :createdBy [AND Artist [FILLS :livedIn ?artistRegion]]]}\\
+      &\quad\text{[FILLS :housedIn [AND Museum [NOT [FILLS :locatedIn ?artistRegion]]]]]}
     \end{align*}
-  \item Да се намерят тези художници, които са изработили портрети с различни графични средства
-    \begin{align*}
-      \text{PortraitMaster } \doteq\\
-      &\text{Artist } \sqcap \\
-      &\exists \text{ :createdBy}.(\text{Artwork} \sqcap \exists \text{ :depicts}.\text{Portrait} \sqcap \exists \text{ :usesMedium}.\text{?medium1}) \sqcap \\
-      &\exists \text{ :createdBy}.(\text{Artwork} \sqcap \exists \text{ :depicts}.\text{Portrait} \sqcap \exists\neg (\text{:usesMedium}.\text{?medium2}))
-    \end{align*}
+  \item Да се намерят тези художници, които са изработили портрети с различни графични средства:
+  \begin{align*}
+    \text{PortraitMaster ?artist} \doteq \\
+    &\text{[AND} \\
+    &\quad \text{Artist} \\
+    &\quad \text{[EXISTS 1} \\
+    &\quad \quad \text{[AND PortraitPainting} \\
+    &\quad \quad \quad \text{[FILLS :usesMedium ?medium1]} \\
+    &\quad \quad \quad \text{[FILLS :createdBy ?artist]]]} \\
+    &\quad \text{[EXISTS 1} \\
+    &\quad \quad \text{[AND PortraitPainting} \\
+    &\quad \quad \quad \text{[FILLS :usesMedium ?medium2]} \\
+    &\quad \quad \quad \text{[FILLS :createdBy ?artist]]]}\\
+    &\quad \text{[NOT [?medium1 = ?medium2]]]}
+  \end{align*}
 \end{itemize}
+\pagebreak
 Синтаксисът на Protege не позволява променливи, но заявките могат да бъдат изразени чрез SPARQL по следния начин:
 \begin{lstlisting}[language=SPARQL]
   PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -409,10 +253,19 @@
     FILTER (?medium != ?otherMedium)
   }
 \end{lstlisting}
-\section*{Сравнение с други онтологии}
+\begin{figure}[H]
+  \includegraphics[width=\linewidth]{images/q1.png}
+  \par
+  \vspace{1cm}
+  \includegraphics[width=\linewidth]{images/q2.png}
+  \caption{Резултати от изпълнението на \emph{SPARQL} заявките в \emph{Protege}}
+\end{figure}
+\pagebreak
+
+\section{Сравнение с други онтологии. Силни и слаби страни}
 Кратко търсене в интернет откри много ограничено множество онтологии на естествен език, които са посветени на изкуството, сред които най-популярна е тази на Oxford\cite{Davies2009-hf}. Опит за достъп на 14.12.2024 чрез университетския ми профил върна грешка. 
 \newline
-Търсенето обаче не откри онтологии, които са машинно четими. Затова ще посоча някои предимства, недостатъци и възможности за подобрения, които не са базиран на съпоставка с други онтологии:
+Търсенето обаче не откри онтологии, които са машинно четими. Затова ще посоча някои обективни предимства, недостатъци и възможности за подобрения, които не са базирани на съпоставка с други онтологии:
 \begin{itemize}
   \item онтологията е консистентна
   \item зададени са подходящ брой ограничения над ролите, които да помогнат в логическите изводи, но да не намалят изразителната сила на онтологията - например ролята \emph{represents} не е функционална, което отразява възможността едно произведение на изкуството да е екземпляр на повече от един стил
@@ -424,6 +277,11 @@
   \item могат да бъдат дефинирани роли, задаващи точни години за началото и края на епохите, които, с подходящи правила за извод, могат да заменят релациите \emph{precededBy} и \emph{succeededBy}. По този начин епохите могат да се застъпват. Тази онтология умишлено не беше проектирана така с цел да бъдат спазени изискванията за брой и вид на ролите.
   \item съществуват десетки други стилове и хиляди произведения на изкуството, които не фигурират в онтологията и могат да бъдат добавени след консултация с експерт в областта. 
 \end{itemize}
+
+\section{Използвани технологии}
+Онтологията е реализирана и проверена за консистентност на \emph{Python} с библиотеката \emph{owlready2}. \emph{SPARQL} заявките са изпълнени с \emph{Protege}. За визуализацията е използван \emph{WebVOWL}.
+\pagebreak
+
 \nocite{wikipediaCampbellsSoup,wikipediaGirlWith,wikipediaMonaLisa,wikipediaPortraitChalk,wikipediaThird1808,wikipediaHaystacksMonet,wikipediaStarryNight,wikipediaPeriodsWestern,wikipediaVisualArts,studiobinderHistoryTimeline}
 \printbibliography
 

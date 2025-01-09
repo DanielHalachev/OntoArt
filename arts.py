@@ -210,9 +210,9 @@ with onto:
             (usesMedium.value(acrylic_paint))
         ]
 
-    class HistoricalEventPainting(Painting):
+    class HistoricalEventOilPainting(Painting):
         equivalent_to = [
-            Painting & 
+            OilPainting & 
             (depicts.value(historic_event))
         ]
 
@@ -232,6 +232,7 @@ with onto:
         pass
     
     # Artists
+    michelangelo = Artist("Michelangelo")
     vincent_van_gogh = Artist("VincentVanGogh")
     johannes_vermeer = Artist("JohannesVermeer")
     leonardo_da_vinci = Artist("LeonardoDaVinci")
@@ -247,6 +248,7 @@ with onto:
     claude_monet.livedIn = [western_europe]
 
     # Museums
+    galleria_dell_accademia = Museum("GalleriaDellAccademia")
     louvre_museum = Museum("LouvreMuseum")
     moma = Museum("MoMA")
     prado_museum = Museum("PradoMuseum")
@@ -254,19 +256,26 @@ with onto:
     biblioteca_reale_turin = Museum("BibliotecaRealeTurin")
     mauritshuis = Museum("Mauritshuis")
     
+    galleria_dell_accademia.locatedIn = [western_europe]
     louvre_museum.locatedIn = [western_europe]
     moma.locatedIn = [north_america]
     prado_museum.locatedIn = [western_europe]
     kathe_kollwitz_museum.locatedIn = [western_europe]
     biblioteca_reale_turin.locatedIn = [western_europe]
     mauritshuis.locatedIn = [western_europe]
+    
+    # Artwork
+    david = Artwork("David")
+    david.createdBy = [michelangelo]
+    david.represents = [italian_renaissance]
+    david.housedIn = [galleria_dell_accademia]
 
     # Paintings
     mona_lisa = PortraitOilPainting("MonaLisa")
     portrait_of_a_man_in_red_chalk = PortraitPainting("PortraitOfAManInRedChalk")
     girl_with_a_pearl_earring = PortraitOilPainting("GirlWithAPearlEarring")
     campbells_soup_cans = AcrylicPainting("CampbellsSoupCans")
-    third_of_may_1808 = HistoricalEventPainting("ThirdOfMay1808")
+    third_of_may_1808 = HistoricalEventOilPainting("ThirdOfMay1808")
     haystacks = LandscapePainting("Haystacks")
     starry_night_over_the_rhone = LandscapePainting("StarryNightOverTheRhone")
     
@@ -315,27 +324,21 @@ with onto:
 with onto:
     sync_reasoner()
     
-# inconsistent_classes = onto.inconsistent_classes()
-# if inconsistent_classes:
-#     print("Inconsistent classes:")
-#     for cls in inconsistent_classes:
-#         print(cls)
-#         for individual in cls.instances():
-#             print(f"  Inconsistent individual: {individual}")
-# else:
-#     print("The ontology is consistent.")
+inconsistent_classes = onto.inconsistent_classes()
+if inconsistent_classes:
+    print("Inconsistent classes:")
+    for cls in inconsistent_classes:
+        print(cls)
+        for individual in cls.instances():
+            print(f"  Inconsistent individual: {individual}")
+else:
+    print("The ontology is consistent.")
 
 list(default_world.inconsistent_classes())
 list(onto.inconsistent_classes())
 
 # with onto:
 #     sync_reasoner_pellet(infer_property_values = True, infer_data_property_values = True, debug = 2)
-    
-print("Haystacks depicts:", haystacks.depicts)
-print("Type of depicted entity:", type(haystacks.depicts[0]))
-print("Is Haystacks an Artwork? :", Artwork in haystacks.is_a)
-print("Is Haystacks a Painting? :", Painting in haystacks.is_a)
-print("Is Haystacks an Artwork? :", Artwork in haystacks.INDIRECT_is_a)
-print("Is Haystacks a Painting? :", Painting in haystacks.INDIRECT_is_a)
+
 # Save ontology
 onto.save(file = "art.owl")
